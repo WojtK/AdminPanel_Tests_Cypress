@@ -5,11 +5,11 @@ function Log_In(login, password) {
     cy.get('[value="Zaloguj się"]').click()
 }
 
-describe('Django Admin Panel', () => {
+describe('Add and remove user "cypres"', () => {
     beforeEach(() => {
         Log_In("admin", "admin")
     })
-    it('Add user', () => {
+    it('Add user "cypres"', () => {
         cy.get('[href="/admin/auth/user/add/"]').click()
         cy.get('[id="id_username"]').type("cypres")
         cy.get('[id="id_password1"]').type("TestTest10!")
@@ -17,7 +17,7 @@ describe('Django Admin Panel', () => {
         cy.get('[value="Zapisz"]').click()
         cy.get('[class="success"]').contains('został dodany pomyślnie')
     })
-    it('Delete user', () => {
+    it('Delete user "cypres"', () => {
         cy.get('[href="/admin/auth/user/"').first().click()
         cy.get('[id="searchbar"]').type("cypres")
         cy.get('[value="Szukaj"]').click()
