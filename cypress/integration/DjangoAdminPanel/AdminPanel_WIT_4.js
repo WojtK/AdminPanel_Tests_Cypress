@@ -1,3 +1,8 @@
+/*
+Scenariusz WIT-1 [AdminPanel] - Zalogowanie
+się i wylogowanie
+ */
+
 describe('Admin login and logout (correct and incorrect data)', () => {
     it('Log in (incorrect password)', () => {
         cy.visit('http://127.0.0.1:8000/admin/')

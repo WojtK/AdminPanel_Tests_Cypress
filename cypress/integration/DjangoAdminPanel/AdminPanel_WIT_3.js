@@ -1,3 +1,8 @@
+/*
+Scenariusz WIT-3 [AdminPanel] - Dodanie
+i usunięcie grupy
+ */
+
 function Log_In(login, password) {
     cy.visit('http://127.0.0.1:8000/admin/')
     cy.get('[id="id_username"]').type("admin")
@@ -5,28 +10,22 @@ function Log_In(login, password) {
     cy.get('[value="Zaloguj się"]').click()
 }
 
-describe('Add and remove user "cypres"', () => {
+describe('Add and remove group', () => {
     beforeEach(() => {
         Log_In("admin", "admin")
     })
-    it('Add user "cypres"', () => {
-        cy.get('[href="/admin/auth/"]').click()
-        cy.get('[href="/admin/auth/user/add/"]').click()
-        cy.get('[id="id_username"]').type("cypres")
-        cy.get('[id="id_password1"]').type("TestTest10!")
-        cy.get('[id="id_password2"]').type("TestTest10!")
+    it('Add group "cypres_grupa"', () => {
+        cy.get('[href="/admin/auth/group/add/"]').click()
+        cy.get('[name="name"]').type("cypres_grupa")
         cy.get('[value="Zapisz"]').click()
         cy.get('[class="success"]').contains('został dodany pomyślnie')
     })
-    it('Delete user "cypres"', () => {
-        cy.get('[href="/admin/auth/"]').click()
-        cy.get('[href="/admin/auth/user/"').first().click()
-        cy.get('[id="searchbar"]').type("cypres")
+    it('Delete group "cypres_grupa"', () => {
+        cy.get('[href="/admin/auth/group/"').first().click()
+        cy.get('[id="searchbar"]').type("cypres_grupa")
         cy.get('[value="Szukaj"]').click()
         cy.get('[class="action-checkbox"]').click()
         cy.get('[name="action"]').select('delete_selected')
-        cy.get('[title="Wykonaj wybraną akcję"]').click()
-        cy.get('[href="#"]').click()
         cy.get('[title="Wykonaj wybraną akcję"]').click()
         cy.get('[value="Tak, na pewno"]').click()
         cy.get('[class="success"]').contains('Pomyślnie usunięto')
