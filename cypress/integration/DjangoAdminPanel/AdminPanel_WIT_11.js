@@ -5,8 +5,8 @@ Edycja nazwy grupy
 
 function Log_In(login, password) {
     cy.visit('http://127.0.0.1:8000/admin/')
-    cy.get('[id="id_username"]').type("admin")
-    cy.get('[id="id_password"]').type("admin")
+    cy.get('[id="id_username"]').type(login)
+    cy.get('[id="id_password"]').type(password)
     cy.get('[value="Zaloguj się"]').click()
 }
 
